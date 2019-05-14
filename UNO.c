@@ -20,6 +20,7 @@ int i;
 	}
 }
 
+
 void main (int argn, char * argv[]){
 	if (argn<3) {
 		printf("Error fitxers...\n");
@@ -29,16 +30,41 @@ void main (int argn, char * argv[]){
 	LlegirParams(argv[1],argv[2],&Partida);
 
 	Crear_baraja(baraja);
-	Barajar_baraja(baraja); // Barrejar 4 vegades
+	Barajar_baraja(baraja); // Barrejar 4 vegades 
 	Barajar_baraja(baraja);
 	Barajar_baraja(baraja);
 	Barajar_baraja(baraja);
 	Repartir_cartes(baraja, &Partida);
 	PintarBaraja();
 
-	/*
-	Comença la Partida
-	*/
-
 	}
+	
+/*int opcio;
+
+	printf("UNO\n\n");
+	printf("1.Jugar\n");
+	printf("2.Mostrar estadisticas\n");
+	printf("3.Salir\n\n");
+
+        do {
+        printf("\nOpcion: ");
+        scanf("%d", &opcio);
+
+	switch(opcio){
+	printf("UNO")
+		case 1:
+			// bla bla
+			break;
+
+		case 2:
+			// bla bla
+			break;
+
+		case 3:
+			break;
+	 
+	 default : printf("Opcion erronia\n");
+        }
+    }while (opcion != 3);
+	*/
 }

@@ -119,6 +119,7 @@ int index = 0;
 	}
 }
 
+ //aqui es barregen les cartes 
 void Barajar_baraja( Carta_t baraja[MAX_CARTES] ){
 
 Carta_t tmp;

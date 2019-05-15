@@ -36,9 +36,6 @@ typedef struct{
 	enum Color_t color;
 	int numero;
 	enum Especial_t tipus;
-	int propietari; // owner de la carta
-	// int seguent; //next carta del mateix propietari
-	struct _Carta_t *next;
 } Carta_t;
 
 
@@ -49,13 +46,6 @@ typedef struct{
 	int  n_cartes_def; // cartes inicials a la mà
 } Jugador_t;
 
-
-
-//Ha de ser una llista de cartes
-typedef struct{
-	int primera_carta;
-	int n_cartes; // numero de cartes a la ma
-} Ma_t;
 
 typedef struct{
 	int n_jugadors;

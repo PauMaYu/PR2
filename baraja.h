@@ -1,3 +1,5 @@
+#ifndef _BARAJA_H_
+#define _BARAJA_H_
 
 typedef struct{
   char Name[MAX_NOM]; //pot ser de robar o descartes
@@ -16,3 +18,5 @@ void Llenar_baraja(Baraja *baraja);
 void Barajar_baraja(Baraja *baraja);
 
 void Repartir_cartes_inici(Carta_t baraja[MAX_CARTES], Partida_t *partida);
+
+#endif

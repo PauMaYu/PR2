@@ -1,3 +1,5 @@
+#ifndef _DADES_H_
+#define _DADES_H_
 // estructures de tot el programa
 
 #define MAX_NOM 50
@@ -45,18 +47,8 @@ typedef struct{
 	char nom[MAX_NOM];
 	bool agressiu; // diu si es agressiu o no
 	int  n_cartes_def; // cartes inicials a la mà
-	/*
-	Jugador_t *prev;
-	Jugador_t *next;
-	*/
-
 } Jugador_t;
 
-/*
-typedef struct {
-
-} llista_jugadors:
-*/
 
 
 //Ha de ser una llista de cartes
@@ -90,3 +82,5 @@ typedef struct{
 	int partides_jugades;
 	// vector o llista de PartidasFinalitzades
 } Estadisticas_t;
+
+#endif

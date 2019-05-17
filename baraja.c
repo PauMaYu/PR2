@@ -16,7 +16,7 @@ int Coger_Carta(Baraja *baraja, Carta_t *c){
 	if (baraja -> last == NULL){
     return 0;
   }
-	* c = baraja -> last;
+	* c = baraja -> last -> carta;
 
 	Carta_t *aux;
 	aux = baraja -> last -> next;
@@ -29,16 +29,13 @@ int Coger_Carta(Baraja *baraja, Carta_t *c){
 
 int Baraja_Push(Baraja *b, Carta_t c){
 
-    Carta_t * c_aux = (Carta_t * ) malloc(sizeof(Carta_t));
+    Node *n = (Node *)malloc(sizeof(Node));
     if (c_aux == NULL) { //memory
       return 0;
     }
-    c_aux -> numero = c.numero;
-		c_aux -> color = c.color;
-		c_aux -> tipus = c.tipus;
-		c_aux -> propietari = c.propietari;
+    n -> carta = c;
 
-    c_aux -> next = b -> last;
+    n -> next = b -> last;
 
     (b -> size)++; //no oblidar els parentesis
     b -> last = c_aux;
@@ -55,7 +52,6 @@ int index = 0;
 			carta.numero = j;
 			carta.color = i;
 			carta.tipus = NORMAL;
-			carta.propietari = PILA_ROBAR;
 			Baraja_Push(baraja, carta);
 			//baraja[index].seguent = index+1;
 			//index++;
@@ -67,7 +63,6 @@ int index = 0;
 			carta.numero = j;
 			carta.color = i;
 			carta.tipus = NORMAL;
-			carta.propietari = PILA_ROBAR;
 			Baraja_Push(baraja, carta);
 			//baraja[index].seguent = index+1;
 			//index++;
@@ -78,7 +73,6 @@ int index = 0;
 			carta.numero = SENSE_NUMERO;
 			carta.color = i%MAX_COLORS; // per no repetir el bucle fem que la i valgui 2 cops cada color
 			carta.tipus = SALTAR_TORN;
-			carta.propietari = PILA_ROBAR;
 			Baraja_Push(baraja, carta);
 			//baraja[index].seguent = index+1;
 			//index++;
@@ -88,7 +82,6 @@ int index = 0;
 			carta.numero = SENSE_NUMERO;
 			carta.color = i%MAX_COLORS; // per no repetir el bucle fem que la i valgui 2 cops cada color
 			carta.tipus = CANVIAR_SENTIT;
-			carta.propietari = PILA_ROBAR;
 			Baraja_Push(baraja, carta);
 			//baraja[index].seguent = index+1;
 			//index++;
@@ -98,7 +91,6 @@ int index = 0;
 			carta.numero = SENSE_NUMERO;
 			carta.color = i%MAX_COLORS; // per no repetir el bucle fem que la i valgui 2 cops cada color
 			carta.tipus = ROBAR_2;
-			carta.propietari = PILA_ROBAR;
 			Baraja_Push(baraja, carta);
 	}
 	for (i=0; i<MAX_COLORS; i++){ // Carta especial canvi color
@@ -106,7 +98,6 @@ int index = 0;
 			carta.numero = SENSE_NUMERO;
 			carta.color = SENSE_COLOR;
 			carta.tipus = COMODI_COLOR;
-			carta.propietari = PILA_ROBAR;
 			Baraja_Push(baraja, carta);
 	}
 	for (i=0; i<MAX_COLORS; i++){ // Carta especial robar4
@@ -114,12 +105,11 @@ int index = 0;
 			carta.numero = SENSE_NUMERO;
 			carta.color = SENSE_COLOR;
 			carta.tipus = ROBAR_4;
-			carta.propietari = PILA_ROBAR;
 			Baraja_Push(baraja, carta);
 	}
 }
 
- //aqui es barregen les cartes 
+ //aqui es barregen les cartes
 void Barajar_baraja( Carta_t baraja[MAX_CARTES] ){
 
 Carta_t tmp;
@@ -156,7 +146,6 @@ int i,j,index=0;
 	}
 	partida->descartades.primera_carta = index;
 	partida->descartades.n_cartes = 1;
-	baraja[index].propietari = PILA_DESCARTES;
 	baraja[index].seguent = SENSE_SEGUENT;
 	index++;
 

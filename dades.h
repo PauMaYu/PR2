@@ -44,6 +44,7 @@ typedef struct{
 	char nom[MAX_NOM];
 	bool agressiu; // diu si es agressiu o no
 	int  n_cartes_def; // cartes inicials a la mà
+	Ma ma;
 } Jugador_t;
 
 

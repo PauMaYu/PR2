@@ -5,7 +5,7 @@
 #include "dades.h"
 
 //Inicializa las estructuras que consideréis necesarias.
-LlistaJugadors Llista_create(){
+LlistaJugadors LlistaJ_create(){
   LlistaJugadors jugadors;
   jugadors.first = (Node *)malloc(sizeof(Node));
   jugadors.last = (Node *)malloc(sizeof(Node));
@@ -29,10 +29,7 @@ int Jugador_insert(LlistaJugadors *p, Jugador_t j){
   if ((n == NULL)){
     printf("Warning! Memory error while inserting a new Jugador.\n");
   } else {
-    strcpy(n -> jugador.nom,j.nom);
-    n -> jugador.huma = j.huma;
-    n -> jugador.agressiu = j.agressiu;
-    n -> jugador.n_cartes_def = j.n_cartes_def;
+    n -> jugador = j;
 
     n -> next = p -> pdi -> next;
     n -> prev = p -> pdi;
@@ -46,7 +43,7 @@ int Jugador_insert(LlistaJugadors *p, Jugador_t j){
 
 //Elimina la canción que se está reproduciendo de la playlist. Si quedan canciones,
 //se empieza a reproducir la siguiente (o la primera si se llega al final).
-int Llista_remove(LlistaJugadors *p){
+int LlistaJ_remove(LlistaJugadors *p){
   if (p -> first -> next == p -> last){
     return 0;
   }
@@ -67,7 +64,7 @@ int Llista_remove(LlistaJugadors *p){
 
 //Pasa a reproducir la siguiente canción de la playlist (o la primera si se llega al final).
 
-int Llista_next(LlistaJugadors *p){
+int LlistaJ_next(LlistaJugadors *p){
   if (p -> pdi -> next == p -> last){
     p -> pdi = p -> first -> next;
   } else {
@@ -78,7 +75,7 @@ int Llista_next(LlistaJugadors *p){
 
 //Pasa a reproducir la canción anterior de la playlist (o la última si se llega al principio).
 
-int Llista_previous(LlistaJugadors *p){
+int LlistaJ_previous(LlistaJugadors *p){
   if (p -> pdi -> prev == p -> first){
     p -> pdi = p -> last -> prev;
   } else {
@@ -87,15 +84,15 @@ int Llista_previous(LlistaJugadors *p){
   return 1;
 }
 
-int Llista_is_empty(LlistaJugadors p){
+int LlistaJ_is_empty(LlistaJugadors p){
   return p.first -> next == p.last;
 }
-void Llista_go_first(LlistaJugadors *p){
+void LlistaJ_go_first(LlistaJugadors *p){
     p -> last = p -> first;
 }
 
 //Devuelve la canción que se esté reproduciendo actualmente.
-Jugador_t Llista_get(LlistaJugadors p){
+Jugador_t LlistaJ_get(LlistaJugadors p){
   if (p.pdi == p.last){
   //    return NULL;
   }else{
@@ -104,7 +101,7 @@ Jugador_t Llista_get(LlistaJugadors p){
 }
 
 // Elimina las estructuras y libera memoria.
-void Llista_destroy(LlistaJugadors *p){
+void LlistaJ_destroy(LlistaJugadors *p){
   Llista_go_first(p);
   while (! Llista_is_empty(*p)){
     Llista_remove(p);

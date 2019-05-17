@@ -1,10 +1,15 @@
 #ifndef _BARAJA_H_
 #define _BARAJA_H_
 
+typedef struct _node{
+  Carta_t carta;
+  struct _node *next;
+} Node;
+
 typedef struct{
   char Name[MAX_NOM]; //pot ser de robar o descartes
   int mida;
-  Carta_t *last;
+  Node *last;
 }Baraja;
 
 Baraja Crear_Baraja();
